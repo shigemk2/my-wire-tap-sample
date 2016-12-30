@@ -17,6 +17,7 @@ class MessageLogger(messageReceiver: ActorRef) extends Actor {
   def receive: Receive = {
     case m: Any =>
       println(s"LOG: $m")
+      // forward
       messageReceiver forward m
       WireTapDriver.completedStep()
   }
