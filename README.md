@@ -9,3 +9,12 @@ copy code from [Reactive Messaging Patterns with Actor Model](https://www.amazon
     activator run
 
 
+## Result
+
+example
+
+```$xslt
+LOG: ProcessOrder(Order(123))
+OrderProcessor: received: ProcessOrder(Order(123))
+WireTap is completed.
+```
