@@ -13,3 +13,6 @@ class MessageLogger(messageReceiver: ActorRef) extends Actor {
       WireTapDriver.completedStep()
   }
 }
+
+case class Order(orderId: String)
+case class ProcessOrder(order: Order)
