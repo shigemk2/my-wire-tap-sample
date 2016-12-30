@@ -16,3 +16,11 @@ class MessageLogger(messageReceiver: ActorRef) extends Actor {
 
 case class Order(orderId: String)
 case class ProcessOrder(order: Order)
+
+class OrderProcessor extends Actor {
+  def receive = {
+    case command: ProcessOrder =>
+      println(s"OrderProcessor: received: $command")
+      WireTapDriver.completedStep()
+  }
+}
