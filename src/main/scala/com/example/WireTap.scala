@@ -5,7 +5,7 @@ import akka.actor._
 object WireTapDriver extends CompletableApp(2) {
   val order = Order("123")
   val orderProcessor = system.actorOf(Props[OrderProcessor], "orderProcessor")
-  val logger= system.actorOf(Props[MessageLogger], "logger")
+  val logger= system.actorOf(Props(classOf[MessageLogger], orderProcessor), "logger")
   val orderProcessorWireTap = logger
 
   orderProcessorWireTap ! ProcessOrder(order)
