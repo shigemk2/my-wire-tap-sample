@@ -14,7 +14,7 @@ object WireTapDriver extends CompletableApp(2) {
 }
 
 class MessageLogger(messageReceiver: ActorRef) extends Actor {
-  def receive = {
+  def receive: Unit = {
     case m: Any =>
       println(s"LOG: $m")
       messageReceiver forward m
@@ -26,7 +26,7 @@ case class Order(orderId: String)
 case class ProcessOrder(order: Order)
 
 class OrderProcessor extends Actor {
-  def receive = {
+  def receive: Unit = {
     case command: ProcessOrder =>
       println(s"OrderProcessor: received: $command")
       WireTapDriver.completedStep()
